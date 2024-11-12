@@ -1,4 +1,4 @@
-# from src.translator import translate_content
+from src.translator import translate_content
 # from test.unit.eval_sets import *
 # from test.unit.eval_fns import eval_single_response_complete
 
