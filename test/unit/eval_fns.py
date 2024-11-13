@@ -30,7 +30,6 @@ def eval_single_response_complete(expected_answer: tuple[bool, str], llm_respons
     response_is_english, response_translation = llm_response
 
     # Evaluate classification
-    # classification_score = 1.0 if expected_is_english == response_is_english else 0.0
     classification_score = eval_single_response_classification(expected_translation, response_translation)
 
     # Evaluate translation only if not English

@@ -2,7 +2,7 @@ def translate_content(content: str) -> tuple[bool, str]:
     if content == "这是一条中文消息":
         return False, "This is a Chinese message"
     if content == "Ceci est un message en français":
-        return False, "This is a French message"
+        return False, "Checking to make sure this links correctly"
     if content == "Esta es un mensaje en español":
         return False, "This is a Spanish message"
     if content == "Esta é uma mensagem em português":
