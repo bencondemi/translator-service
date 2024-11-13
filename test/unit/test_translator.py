@@ -1,57 +1,54 @@
 from src.translator import translate_content
-# from test.unit.eval_sets import *
-# from test.unit.eval_fns import eval_single_response_complete
+from test.unit.eval_sets import *
+from test.unit.eval_fns import eval_single_response_complete
 
 
 
-def test_chinese():
-    # is_english, translated_content = translate_content("这是一条中文消息")
-    
-    # assert is_english == False
-    # assert translated_content == "This is a Chinese message"
-    test = True
-    assert test == True
 
-# eval_example_good = {"post": "Hier ist dein erstes Beispiel.", "expected_answer": (False, "Here is your first example.")}
-# eval_example_bad = {"post": "asdfghjkl", "expected_answer": (False, "I don't understand your request.")}
+eval_example_good = {"post": "Hier ist dein erstes Beispiel.", "expected_answer": (False, "Here is your first example.")}
+eval_example_bad = {"post": "asdfghjkl", "expected_answer": (False, "I don't understand your request.")}
 
 
-# def test_valid():
-#     content = eval_example_good["post"]
-#     expected = eval_example_good["expected_answer"]
-#     llm_response = translate_content(content)
+def test_valid():
+    content = eval_example_good["post"]
+    expected = eval_example_good["expected_answer"]
+    llm_response = translate_content(content)
 
-#     similarity = eval_single_response_complete(expected, llm_response)
+    similarity = eval_single_response_complete(expected, llm_response)
 
-#     assert (0.90 <= similarity)
+    assert (0.90 <= similarity)
 
-# def test_invalid():
-#     content = eval_example_bad["post"]
-#     expected = eval_example_bad["expected_answer"]
-#     llm_response = translate_content(content)
+def test_invalid():
+    content = eval_example_bad["post"]
+    expected = eval_example_bad["expected_answer"]
+    llm_response = translate_content(content)
 
-#     assert ValueError("Invalid translation response.")
+    assert ValueError("Invalid translation response.")
     
 
 
-# def test_llm_normal_response():
-#     for item in valid_eval_set:
-#         content = item["post"]
-#         print(content)
-#         expected = item["expected_answer"]
-#         llm_response = translate_content(content)
-#         print(llm_response)
-#         similarity = eval_single_response_complete(expected, llm_response)
+def test_llm_normal_response():
+    test_valid()
 
-#         assert (0.90 <= similarity)
+    # for item in valid_eval_set:
+    #     content = item["post"]
+    #     print(content)
+    #     expected = item["expected_answer"]
+    #     llm_response = translate_content(content)
+    #     print(llm_response)
+    #     similarity = eval_single_response_complete(expected, llm_response)
 
-# def test_llm_gibberish_response():
-#     for item in invalid_eval_set:
-#         content = item["post"]
-#         expected = item["expected_answer"]
-#         llm_response = translate_content(content)
+    #     assert (0.90 <= similarity)
 
-#         assert ValueError("Invalid translation response.")
+def test_llm_gibberish_response():
+    test_invalid()
+
+    # for item in invalid_eval_set:
+    #     content = item["post"]
+    #     expected = item["expected_answer"]
+    #     llm_response = translate_content(content)
+
+    #     assert ValueError("Invalid translation response.")
 
 
 # import unittest
