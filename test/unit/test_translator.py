@@ -4,38 +4,24 @@ from src.translator import translate_content
 
 
 
-# def test_chinese():
-    # is_english, translated_content = translate_content("这是一条中文消息")
-    
-    # assert is_english == False
-    # assert translated_content == "This is a Chinese message"
-    
-
-# eval_example_good = {"post": "Hier ist dein erstes Beispiel.", "expected_answer": (False, "Here is your first example.")}
-# eval_example_bad = {"post": "asdfghjkl", "expected_answer": (False, "I don't understand your request.")}
-
-
-def test_valid():
+def test_llm_normal_response():
     is_english, translated_content = translate_content("这是一条中文消息")
-    
     assert is_english == False
     assert translated_content in ["This is a Chinese message.", 
                                     "This is a message in Chinese."]
-    # content = eval_example_good["post"]
-    # expected = eval_example_good["expected_answer"]
-    # llm_response = translate_content(content)
 
-    # similarity = eval_single_response_complete(expected, llm_response)
+    # is_english, translated_content = translate_content("Je suis vraiment content de te voir.")
+    # assert is_english == False
+    # assert translated_content in ["I am really happy to see you.",]
 
-    # assert (0.90 <= similarity)
-
-def test_invalid():
-    # content = eval_example_bad["post"]
-    # expected = eval_example_bad["expected_answer"]
-    # llm_response = translate_content(content)
-
-    is_english, translated_content = translate_content("asldjkjhfjsdh")
     
+
+def test_llm_gibberish_response():
+    is_english, translated_content = translate_content("asldjkjhfjsdh")
+    assert is_english == False
+    assert ValueError("Invalid translation response.")
+
+    is_english, translated_content = translate_content("1234567890")
     assert is_english == False
     assert ValueError("Invalid translation response.")
     
