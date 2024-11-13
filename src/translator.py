@@ -11,6 +11,7 @@ client = AzureOpenAI(
 
 
 
+
 def get_translation(content: str) -> str:
     """
     Translates non-English text to English using the Azure OpenAI GPT-4 model.
