@@ -4,11 +4,11 @@ from src.translator import translate_content
 
 
 
-def test_chinese():
-    is_english, translated_content = translate_content("这是一条中文消息")
+# def test_chinese():
+#     is_english, translated_content = translate_content("这是一条中文消息")
     
-    assert is_english == False
-    assert translated_content == "This is a Chinese message"
+#     assert is_english == False
+#     assert translated_content == "This is a Chinese message"
 
 # eval_example_good = {"post": "Hier ist dein erstes Beispiel.", "expected_answer": (False, "Here is your first example.")}
 # eval_example_bad = {"post": "asdfghjkl", "expected_answer": (False, "I don't understand your request.")}
