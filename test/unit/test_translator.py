@@ -1,6 +1,6 @@
 from src.translator import translate_content
-from test.unit.eval_sets import *
-from test.unit.eval_fns import eval_single_response_complete
+# from test.unit.eval_sets import *
+# from test.unit.eval_fns import eval_single_response_complete
 
 
 
@@ -9,26 +9,31 @@ eval_example_good = {"post": "Hier ist dein erstes Beispiel.", "expected_answer"
 eval_example_bad = {"post": "asdfghjkl", "expected_answer": (False, "I don't understand your request.")}
 
 
-def test_valid():
-    content = eval_example_good["post"]
-    expected = eval_example_good["expected_answer"]
-    llm_response = translate_content(content)
+# def test_valid():
+#     content = eval_example_good["post"]
+#     expected = eval_example_good["expected_answer"]
+#     llm_response = translate_content(content)
 
-    similarity = eval_single_response_complete(expected, llm_response)
+#     similarity = eval_single_response_complete(expected, llm_response)
 
-    assert (0.90 <= similarity)
+#     assert (0.90 <= similarity)
 
-def test_invalid():
-    content = eval_example_bad["post"]
-    expected = eval_example_bad["expected_answer"]
-    llm_response = translate_content(content)
+# def test_invalid():
+#     content = eval_example_bad["post"]
+#     expected = eval_example_bad["expected_answer"]
+#     llm_response = translate_content(content)
 
-    assert ValueError("Invalid translation response.")
+#     assert ValueError("Invalid translation response.")
     
 
 
 def test_llm_normal_response():
-    test_valid()
+    content = eval_example_good["post"]
+    expected = eval_example_good["expected_answer"]
+
+    llm_response = translate_content(content)
+
+    assert llm_response == expected
 
     # for item in valid_eval_set:
     #     content = item["post"]
@@ -41,7 +46,12 @@ def test_llm_normal_response():
     #     assert (0.90 <= similarity)
 
 def test_llm_gibberish_response():
-    test_invalid()
+    content = eval_example_bad["post"]
+    expected = eval_example_bad["expected_answer"]
+
+    llm_response = translate_content(content)
+
+    assert ValueError("Invalid translation response.")
 
     # for item in invalid_eval_set:
     #     content = item["post"]
