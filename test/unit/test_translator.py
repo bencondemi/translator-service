@@ -38,7 +38,7 @@ def test_llm_normal_response():
         print(llm_response)
         similarity = eval_single_response_complete(expected, llm_response)
 
-        assert (0.90 <= similarity)
+        assert (0.90 <= similarity), f"Expected: {expected}, Got: {llm_response}, Similarity: {similarity} for content: {content}"
 
 def test_llm_gibberish_response():
     for item in invalid_eval_set:
@@ -46,7 +46,7 @@ def test_llm_gibberish_response():
         expected = item["expected_answer"]
         llm_response = translate_content(content)
 
-        assert ValueError("Invalid translation response.")
+        assert ValueError("Invalid translation response."), f"Expected: {expected}, Got: {llm_response} for content: {content}"
 
 
 @patch.object(client.chat.completions, 'create')
