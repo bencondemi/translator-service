@@ -33,14 +33,16 @@
 #         return True, "This is an English message"
 #     return True, content
 
+import os
 from openai import AzureOpenAI
 
 # Initialize the Azure OpenAI client
 client = AzureOpenAI(
-    api_key="secrets.API_KEY",
+    api_key=os.getenv("API_KEY"),
     api_version="2024-02-15-preview",
-    azure_endpoint="secrets.AZURE_ENDPOINT"
+    azure_endpoint=os.getenv("AZURE_ENDPOINT")
 )
+
 
 
 def get_translation(content: str) -> str:
