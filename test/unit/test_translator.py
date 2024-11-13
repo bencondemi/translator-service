@@ -5,11 +5,11 @@ from test.unit.eval_fns import eval_single_response_complete
 # import unittest
 # from unittest.mock import patch
 
-def test_llm_normal_response():
-    is_english, translated_content = translate_content("这是一条中文消息")
-    assert is_english == False
-    assert translated_content in ["This is a Chinese message.", 
-                                    "This is a message in Chinese."]
+# def test_llm_normal_response():
+#     is_english, translated_content = translate_content("这是一条中文消息")
+#     assert is_english == False
+#     assert translated_content in ["This is a Chinese message.", 
+#                                     "This is a message in Chinese."]
 
 #     # is_english, translated_content = translate_content("Je suis vraiment content de te voir.")
 #     # assert is_english == False
@@ -17,10 +17,10 @@ def test_llm_normal_response():
 
 
 
-def test_llm_gibberish_response():
-    is_english, translated_content = translate_content("asldjkjhfjsdh")
-    assert is_english == False
-    assert ValueError("Invalid translation response.")
+# def test_llm_gibberish_response():
+#     is_english, translated_content = translate_content("asldjkjhfjsdh")
+#     assert is_english == False
+#     assert ValueError("Invalid translation response.")
 
 #     is_english, translated_content = translate_content("1234567890")
 #     assert is_english == False
@@ -28,24 +28,24 @@ def test_llm_gibberish_response():
     
 
 
-# def test_llm_normal_response():
-#     for item in valid_eval_set:
-#         content = item["post"]
-#         print(content)
-#         expected = item["expected_answer"]
-#         llm_response = translate_content(content)
-#         print(llm_response)
-#         similarity = eval_single_response_complete(expected, llm_response)
+def test_llm_normal_response():
+    for item in valid_eval_set:
+        content = item["post"]
+        print(content)
+        expected = item["expected_answer"]
+        llm_response = translate_content(content)
+        print(llm_response)
+        similarity = eval_single_response_complete(expected, llm_response)
 
-#         assert (0.90 <= similarity)
+        assert (0.90 <= similarity)
 
-# def test_llm_gibberish_response():
-#     for item in invalid_eval_set:
-#         content = item["post"]
-#         expected = item["expected_answer"]
-#         llm_response = translate_content(content)
+def test_llm_gibberish_response():
+    for item in invalid_eval_set:
+        content = item["post"]
+        expected = item["expected_answer"]
+        llm_response = translate_content(content)
 
-#         assert ValueError("Invalid translation response.")
+        assert ValueError("Invalid translation response.")
 
 
 # @patch.object(src.translator.client.chat.completions, 'create')
