@@ -41,3 +41,4 @@ def eval_single_response_complete(expected_answer: tuple[bool, str], llm_respons
 
     # Return average score
     return ((classification_score + translation_score) / 2)
+    
