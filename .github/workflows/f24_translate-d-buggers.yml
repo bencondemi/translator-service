@@ -36,6 +36,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Install sentence transformers
+        run: pip install -U sentence-transformers
+
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       - name: Run the test suite
         run: pytest
